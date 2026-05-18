@@ -133,10 +133,10 @@ Key Insights
 ## Dashboard 
 
 ### Page 1
-![BP1 Dashboard](Page%201%20BP1.png)
+![BP1 Dashboard](Data/Page%201%20BP1.png)
 
 ### Page 2
-![BP2 Dashboard](Page%202%20BP2.png)
+![BP2 Dashboard](Data/Page%202%20BP2.png)
 
 Project Structure
 
