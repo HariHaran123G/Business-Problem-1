@@ -23,46 +23,20 @@ Defects AS (
 
 Combined AS (
  SELECT  p.plant_id,   p.Production_efficiency, d.Total_downtime, df.Total_defects
-
  FROM Production p
-
     JOIN Downtime d
     ON d.plant_id = p.plant_id
-
     JOIN Defects df
     ON df.plant_id = p.plant_id
 ),
 
 Plant_score AS (
-
-    SELECT *,
-
-    ROUND(
-
-        Production_efficiency
-
-        - (Total_downtime / 100.0)
-
-        - (Total_defects * 2),
-
-        2
-
-    ) AS Plant_performance_score
-
+    SELECT *, ROUND( Production_efficiency - (Total_downtime / 100.0) - (Total_defects * 2),  2) AS Plant_performance_score
     FROM Combined
 ),
-
 Ranked AS (
-
     SELECT *,
-
-    RANK() OVER(
-        ORDER BY Plant_performance_score DESC
-    ) AS Rnk
-
+    RANK() OVER(ORDER BY Plant_performance_score DESC) AS Rnk
     FROM Plant_score
 )
-
-SELECT *
-
-FROM Ranked;
+SELECT * FROM Ranked;
